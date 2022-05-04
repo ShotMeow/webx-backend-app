@@ -1,73 +1,117 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 1. О проекте
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+WebX - платформа для онлайн-обучения и прохождения тестирований в сфере веб-разработки. Сервис предоставляет доступ к курсам по различным дисциплинам веб-разработки, а так-же соответствующие тестирования с выдачей сертифкатов и рейтингом участников.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# 2. Описание системы
 
-## Description
+Система веб-приложения состоит из следующих основных функциональных блоков:
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+1. Регистрация и авторизация.
+2. Поисковая выдача курсов и тестов.
+3. Сортировка и выбор категории.
+4. Добавление курсов и тестирований в список избранного.
+5. Рейтинг курсов и тестирований.
+6. Таймер выполнения тестирования.
+7. Вывод случайных вопросов при прохождении тестирования.
+8. Рейтинг участников тестирований.
+9. Выдача советуемых похожих курсов.
+10. Редактирование профиля пользователя.
 
-## Installation
+## 2.1. Типы пользователей
 
-```bash
-$ npm install
-```
+Система предусматривает три типа пользователей системы: редактор, модератор и посетитель.
+* Редактор имеет доступ к созданию, редактированию и удалению тестирований и курсов.
+* Модератор имеет доступ к удалению комментариев посетителей и блокировке учетных записей.
+* Посетитель имеет доступ к регистрации, просмотру доступных курсов и тестирований, прохождению тестирований, получению сертификатов, участие в рейтинге участников.
 
-## Running the app
+## 2.2. Регистрация
 
-```bash
-# development
-$ npm run start
+Регистрация должна иметь полноценную валидацию полей и содержит в себе:
 
-# watch mode
-$ npm run start:dev
+1. ФИО - обязательное поле
+2. E-mail - обязательное поле
+3. Пароль - обязательное поле
+4. Подтверждение пароля - обязательное поле, должно совпадать с полем "Пароль"
 
-# production mode
-$ npm run start:prod
-```
+Процесс регистрации сопровождается подтверждением согласия с лицензионным соглашением.
 
-## Test
+## 2.3. Авторизация
 
-```bash
-# unit tests
-$ npm run test
+Авторизация должна иметь полноценную валидацию полей и содержит в себе:
 
-# e2e tests
-$ npm run test:e2e
+1. E-mail - обязательное поле
+2. Пароль - обязательное поле
 
-# test coverage
-$ npm run test:cov
-```
+Так-же авторизация должна иметь поле "Забыли пароль?"
 
-## Support
+## 2.4. Поисковая выдача курсов и тестов
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Должна осуществляться по ключевым словам, заданным в БД
 
-## Stay in touch
+## 2.5. Сортировка и выбор категории
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Сортировка имеет в себе:
+1. По популярности
+2. По сложности
+3. По рейтингу
 
-## License
+Категории имеют в себе:
+1. Backend
+2. Frontend
+3. Design
 
-Nest is [MIT licensed](LICENSE).
+## 2.6. Добавление курсов и тестирований в список избранного
+
+На странице с конкретным тестированием или курсов есть действие "В избранное". При клике сущность должна появляться у пользователя в списке избранного. Быстрый доступ к списку избранного находится в шапке веб-приложения рядом с аватаром пользователя.
+
+## 2.7. Рейтинг курсов и тестирований
+
+При прохождении курса или тестирования, пользователю должно всплывать модальное окно с выбором оценки и вводом комментария (необязательное поле).
+
+## 2.8. Таймер выполнения тестирования
+
+После начала прохождения тестирования в верхнем правом углу должен начаться таймер формата ч:м:с. После завершения тестирования количество пройденного время учитывается в итоговой оценке за тестирование.
+
+## 2.9. Вывод случайных вопросов при прохождении тестирования
+
+Для сложности прохождения при каждом новом прохождении тестирования пользователю будут показываться случайные отобранные из общего списка вопросы. Вопросы имеют небольшой шанс повторяться.
+
+## 2.10. Выдача советуемых похожих курсов
+
+После прохождения тестирования, в конечном окне пользователю будут показаны советуемые курсы от платформы WebX. Вывод воспроизводится по ключевым словам.
+
+## 2.11. Редактирование профиля пользователя
+
+Пользовать может изменять и дополнять информацию своего аккаунта в своем профиле. В окне "Настройки" пользователь может изменить свою почту и пароль. Так-же можно подключить многофакторную аутентификацию по почте. Пользователь может изменять свой аватар и основные сведения (ФИО, Профессиональный заголовок, поле "Обо мне", ссылки на свои социальные сети)
+
+# 3. Стек технологий
+
+Для реализации системы были использованы следующие технологии:
+
+* Frontend:
+    - React
+    - Typescript
+
+* Backend:
+    - NestJS
+
+* Design:
+    - Figma
+
+# 4. Дизайн проекта
+
+Дизайн выполнен в минималистичном стиле без использования лишний цветов и шрифтов. 
+
+Используемые цвета:
+* Primary BG - #FAFDFF
+* Secondary BG - #FFFFFF
+* Tertiary BG - #1C54F2
+* Primary TEXT - #1E1E1E
+* Secondary TEXT - #A0A0A0
+* Tertiary TEXT - #FFFFFF
+
+Используемые шрифты:
+* Montserrat - 400, 500, 600, 700
+
+Подробнее с дизайном можно ознакомиться по следующей ссылке: https://www.figma.com/file/JMqmgi2UO6OYDgL8Rjw3cX/WebX?node-id=19%3A152
+#
