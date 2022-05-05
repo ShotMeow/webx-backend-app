@@ -1,6 +1,13 @@
-import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
+import {
+  BelongsTo,
+  Column,
+  DataType,
+  ForeignKey,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
-import { Role } from "../roles/roles.model";
+import { Role } from '../roles/roles.model';
 
 interface UserCreationAttrs {
   fullName: string;
