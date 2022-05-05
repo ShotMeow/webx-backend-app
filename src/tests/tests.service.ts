@@ -8,22 +8,19 @@ export class TestsService {
   constructor(@InjectModel(Test) private testsRepository: typeof Test) {}
 
   async createTest(dto: CreateTestDto) {
-    const test = await this.testsRepository.create(dto);
-    return test;
+    return await this.testsRepository.create(dto);
   }
 
   async getAllTests() {
-    const tests = await this.testsRepository.findAll({
+    return await this.testsRepository.findAll({
       include: { all: true },
     });
-    return tests;
   }
 
   async getTestsByCategory(category: string) {
-    const tests = await this.testsRepository.findAll({
+    return await this.testsRepository.findAll({
       where: { category },
       include: { all: true },
     });
-    return tests;
   }
 }

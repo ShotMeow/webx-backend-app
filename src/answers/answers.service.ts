@@ -8,7 +8,6 @@ export class AnswersService {
   constructor(@InjectModel(Answer) private answerRepository: typeof Answer) {}
 
   async createAnswer(dto: CreateAnswerDto) {
-    const answer = this.answerRepository.create(dto);
-    return answer;
+    return this.answerRepository.create(dto);
   }
 }

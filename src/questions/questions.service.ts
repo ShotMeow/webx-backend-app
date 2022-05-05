@@ -10,8 +10,7 @@ export class QuestionsService {
   ) {}
 
   async createQuestion(dto: CreateQuestionDto) {
-    const question = await this.questionRepository.create(dto);
-    return question;
+    return await this.questionRepository.create(dto);
   }
 
   async getAllQuestions() {

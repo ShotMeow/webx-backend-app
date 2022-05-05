@@ -45,7 +45,7 @@ export class User extends Model<User, UserCreationAttrs> {
 
   @ApiProperty({ example: '1', description: 'Идентификатор роли пользователя' })
   @ForeignKey(() => Role)
-  @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 1 })
+  @Column({ type: DataType.INTEGER, allowNull: false })
   role_id: number;
 
   @ApiProperty({ example: 'true', description: 'Статус аккаунта пользователя' })
