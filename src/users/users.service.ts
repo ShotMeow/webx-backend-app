@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { User } from './users.model';
 import { CreateUserDto } from './dto/create-user.dto';
 import { InjectModel } from '@nestjs/sequelize';
@@ -14,7 +14,7 @@ export class UsersService {
   async createUser(dto: CreateUserDto) {
     const user = await this.userRepository.create(dto);
     const role = await this.roleService.getRoleByValue('USER');
-    await user.$set('roles', role.id);
+    await user.$set('role_id', role.id);
     user.role_id = role.id;
     return user;
   }
@@ -28,11 +28,6 @@ export class UsersService {
       where: { email },
       include: { all: true },
     });
-    if (user) {
-      return user;
-    }
-    throw new UnauthorizedException({
-      message: 'Некорректный email или пароль',
-    });
+    return user;
   }
 }

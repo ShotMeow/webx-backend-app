@@ -6,6 +6,12 @@ import { User } from './users/users.model';
 import { RolesModule } from './roles/roles.module';
 import { Role } from './roles/roles.model';
 import { AuthModule } from './auth/auth.module';
+import { TestsModule } from './tests/tests.module';
+import { QuestionsModule } from './questions/questions.module';
+import { Test } from './tests/tests.model';
+import { Question } from './questions/questions.model';
+import { AnswersModule } from './answers/answers.module';
+import { Answer } from './answers/answers.model';
 
 @Module({
   imports: [
@@ -19,12 +25,15 @@ import { AuthModule } from './auth/auth.module';
       username: process.env.POSTGRES_USERNAME,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-      models: [User, Role],
+      models: [User, Role, Test, Question, Answer],
       autoLoadModels: true,
     }),
     UsersModule,
     RolesModule,
     AuthModule,
+    TestsModule,
+    QuestionsModule,
+    AnswersModule,
   ],
   controllers: [],
   providers: [],

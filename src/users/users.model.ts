@@ -1,5 +1,4 @@
 import {
-  BelongsTo,
   Column,
   DataType,
   ForeignKey,
@@ -52,7 +51,4 @@ export class User extends Model<User, UserCreationAttrs> {
   @ApiProperty({ example: 'true', description: 'Статус аккаунта пользователя' })
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   banned: boolean;
-
-  @BelongsTo(() => Role)
-  roles: Role[];
 }

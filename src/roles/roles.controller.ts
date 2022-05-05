@@ -16,6 +16,11 @@ export class RolesController {
     return this.rolesService.createRole(dto);
   }
 
+  @Get()
+  getAllRoles() {
+    return this.rolesService.getAllRoles();
+  }
+
   @ApiOperation({ summary: 'Получить описание роли по значению' })
   @ApiResponse({ status: 200, type: Role })
   @Get('/:value')
