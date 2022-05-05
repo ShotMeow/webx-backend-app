@@ -1,5 +1,6 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, DataType, ForeignKey, HasOne, Model, Table } from "sequelize-typescript";
 import { ApiProperty } from '@nestjs/swagger';
+import { Role } from "../roles/roles.model";
 
 interface UserCreationAttrs {
   fullName: string;
@@ -36,7 +37,15 @@ export class User extends Model<User, UserCreationAttrs> {
   @Column({ type: DataType.STRING, allowNull: false })
   password: string;
 
+  @ApiProperty({ example: '1', description: 'Идентификатор роли пользователя' })
+  @ForeignKey(() => Role)
+  @Column({ type: DataType.INTEGER, allowNull: false, defaultValue: 1 })
+  role_id: number;
+
   @ApiProperty({ example: 'true', description: 'Статус аккаунта пользователя' })
   @Column({ type: DataType.BOOLEAN, defaultValue: false })
   banned: boolean;
+
+  @BelongsTo(() => Role)
+  roles: Role[];
 }
