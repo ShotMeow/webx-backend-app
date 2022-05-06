@@ -1,6 +1,7 @@
 import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
 import { Question } from '../questions/questions.model';
+import { Leader } from '../leaders/leaders.model';
 
 interface TestCreationAttrs {
   name: string;
@@ -67,4 +68,7 @@ export class Test extends Model<Test, TestCreationAttrs> {
 
   @HasMany(() => Question)
   questions: Question[];
+
+  @HasMany(() => Leader)
+  leaders: Leader[];
 }
