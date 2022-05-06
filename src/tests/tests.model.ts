@@ -1,8 +1,16 @@
-import { Column, DataType, HasMany, Model, Table } from 'sequelize-typescript';
+import {
+  Column,
+  DataType,
+  ForeignKey,
+  HasMany,
+  Model,
+  Table,
+} from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
 import { Question } from '../questions/questions.model';
 import { Leader } from '../leaders/leaders.model';
 import { Review } from '../reviews/reviews.model';
+import { Category } from '../categories/categories.model';
 
 interface TestCreationAttrs {
   name: string;
@@ -64,8 +72,9 @@ export class Test extends Model<Test, TestCreationAttrs> {
     example: 'Frontend',
     description: 'Категория тестирования',
   })
-  @Column({ type: DataType.STRING, allowNull: false })
-  category: string;
+  @ForeignKey(() => Category)
+  @Column({ type: DataType.INTEGER, allowNull: false })
+  category_id: number;
 
   @HasMany(() => Question)
   questions: Question[];

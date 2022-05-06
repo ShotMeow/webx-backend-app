@@ -16,6 +16,8 @@ import { LeadersModule } from './leaders/leaders.module';
 import { Leader } from './leaders/leaders.model';
 import { ReviewsModule } from './reviews/reviews.module';
 import { Review } from './reviews/reviews.model';
+import { CategoriesModule } from './categories/categories.module';
+import { Category } from './categories/categories.model';
 
 @Module({
   imports: [
@@ -29,7 +31,7 @@ import { Review } from './reviews/reviews.model';
       username: process.env.POSTGRES_USERNAME,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
-      models: [User, Role, Test, Question, Answer, Leader, Review],
+      models: [User, Role, Test, Question, Answer, Leader, Review, Category],
       autoLoadModels: true,
     }),
     UsersModule,
@@ -40,6 +42,7 @@ import { Review } from './reviews/reviews.model';
     AnswersModule,
     LeadersModule,
     ReviewsModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [],

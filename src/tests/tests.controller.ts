@@ -23,10 +23,8 @@ export class TestsController {
     return this.testsService.getAllTests();
   }
 
-  @ApiOperation({ summary: 'Получить тесты по категории' })
-  @ApiResponse({ status: 200, type: [User] })
-  @Get('/:value')
-  getByCategory(@Param('value') value: string) {
-    return this.testsService.getTestsByCategory(value);
+  @Get('/:id')
+  getCurrent(@Param('id') id: number) {
+    return this.testsService.getCurrentTest(id);
   }
 }

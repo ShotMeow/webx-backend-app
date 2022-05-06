@@ -12,14 +12,12 @@ export class TestsService {
   }
 
   async getAllTests() {
-    return await this.testsRepository.findAll({
-      include: { all: true },
-    });
+    return await this.testsRepository.findAll({});
   }
 
-  async getTestsByCategory(category: string) {
-    return await this.testsRepository.findAll({
-      where: { category },
+  async getCurrentTest(id: number) {
+    return await this.testsRepository.findOne({
+      where: { id },
       include: { all: true },
     });
   }
