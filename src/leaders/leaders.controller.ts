@@ -1,7 +1,9 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { LeadersService } from './leaders.service';
 import { LeaderAppendDto } from './dto/leader-append.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Таблица лидеров')
 @Controller('leaders')
 export class LeadersController {
   constructor(private leadersService: LeadersService) {}

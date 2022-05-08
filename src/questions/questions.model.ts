@@ -10,7 +10,7 @@ interface QuestionCreationAttrs {
   answer: string;
 }
 
-@Table({ tableName: 'questions' })
+@Table({ tableName: 'questions', createdAt: false, updatedAt: false })
 export class Question extends Model<Question, QuestionCreationAttrs> {
   @ApiProperty({ example: '1', description: 'Уникальный идентификатор' })
   @Column({
